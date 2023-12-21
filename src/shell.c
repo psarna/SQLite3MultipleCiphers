@@ -28832,13 +28832,6 @@ int SQLITE_CDECL wmain(int argc, wchar_t **wargv){
   }
 #endif
 
-#if USE_SYSTEM_SQLITE+0!=1
-  if( cli_strncmp(sqlite3_sourceid(),SQLITE_SOURCE_ID,60)!=0 ){
-    eputf("SQLite header and source version mismatch\n%s\n%s\n",
-          sqlite3_sourceid(), SQLITE_SOURCE_ID);
-    exit(1);
-  }
-#endif
   main_init(&data);
 
   /* On Windows, we must translate command-line arguments into UTF-8.

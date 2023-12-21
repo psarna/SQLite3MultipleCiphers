@@ -1328,7 +1328,7 @@ sqlite3mcCheckVfs(const char* zVfs)
         {
           /* Real VFS exists */
           /* Create VFS with encryption support based on real VFS */
-          rc = sqlite3mc_vfs_create(zVfsReal, 0);
+          rc = sqlite3mc_vfs_create(zVfsReal, 1);
         }
       }
     }
