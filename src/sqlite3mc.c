@@ -127,9 +127,9 @@ extern SQLITE_API LPWSTR sqlite3_win32_utf8_to_unicode(const char*);
 #endif
 
 /*
-** Include SQLite3 amalgamation
+** Include libSQL amalgamation
 */
-#include "sqlite3patched.c"
+#include "sqlite3.c"
 
 /*
 ** Include SQLite3MultiCipher components 
