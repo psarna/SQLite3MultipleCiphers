@@ -815,16 +815,13 @@ wxsqlite3_codec_data(sqlite3* db, const char* zDbName, const char* paramName)
 ** Functions called from patched SQLite version
 */
 
-SQLITE_PRIVATE int
-sqlite3mcFileControlPragma(sqlite3* db, const char* zDbName, int op, void* pArg)
+int libsql_extra_pragma(sqlite3* db, const char* zDbName, void* pArg)
 {
-  int rc = sqlite3_file_control(db, zDbName, op, pArg);
-  if (rc == SQLITE_NOTFOUND)
-  {
     int configDefault;
     char* pragmaName;
     char* pragmaValue;
     int dbIndex = (zDbName) ? sqlite3FindDbName(db, zDbName) : 0;
+    int rc = SQLITE_NOTFOUND;
     if (dbIndex < 0 && zDbName != NULL)
     {
       /* Unknown schema name */
@@ -1077,7 +1074,6 @@ sqlite3mcFileControlPragma(sqlite3* db, const char* zDbName, int op, void* pArg)
         }
       }
     }
-  }
   return rc;
 }
 
