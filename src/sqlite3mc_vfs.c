@@ -353,7 +353,7 @@ SQLITE_PRIVATE void sqlite3mcSetCodec(sqlite3* db, const char* zDbName, const ch
 ** This function returns a pointer to a buffer containing the encrypted
 ** page content. If a malloc fails, this function may return NULL.
 */
-SQLITE_PRIVATE void* sqlite3mcPagerCodec(PgHdrMC* pPg)
+void* libsql_pager_codec_impl(libsql_pghdr* pPg)
 {
   sqlite3_file* pFile = sqlite3PagerFile(pPg->pPager);
   void* aData = 0;
@@ -1336,8 +1336,7 @@ sqlite3mcCheckVfs(const char* zVfs)
   return rc;
 }
 
-SQLITE_PRIVATE int
-sqlite3mcPagerHasCodec(PagerMC* pPager)
+int libsql_pager_has_codec_impl(struct Pager* pPager)
 {
   int hasCodec = 0;
   sqlite3mc_vfs* pVfsMC = NULL;
